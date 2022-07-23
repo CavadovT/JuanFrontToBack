@@ -62,6 +62,7 @@ namespace IdentityPractise.Controllers
         /// <param name="comment"></param>
         /// <param name="BlogId"></param>
         /// <returns></returns>
+        
         public async Task<IActionResult> AddComment(Comment comment, int BlogId)
         {
             if (!ModelState.IsValid) return View();
@@ -82,7 +83,12 @@ namespace IdentityPractise.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("detail", new { id = BlogId });
         }
-
+        /// <summary>
+        /// Delete Comment Action 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="BlogId"></param>
+        /// <returns></returns>
         public async Task<IActionResult> DeleteComment(int? Id,int BlogId)
         {
             Comment comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == Id);
